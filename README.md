@@ -40,6 +40,12 @@ This module evaluates and compares the performance of pathfinding algorithms on 
 > 2. Extract the downloaded archive.
 > 3. Place the `PandaSetSensorData` folder directly in the root directory of this repository (as shown in the Repository Structure above), ensuring the path `PandaSetSensorData/archive/044/Camera/front_camera/` contains the target `.jpg` images.
 
+
+<div align="center">
+  <img width="80%" alt="Lane Detection" src="https://github.com/user-attachments/assets/8b79ebe5-8afb-498d-bb29-6f41f0f2bc14" />
+</div>
+
+
 This section details the logical and mathematical architecture of the software, following the fundamental steps of the GOLD (Generic Obstacle and Lane Detection) algorithm.
 
 
