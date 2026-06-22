@@ -42,6 +42,12 @@ This repository contains a collection of three distinct computer vision and path
 
 This module evaluates and compares the performance of pathfinding algorithms on real-world OpenStreetMap data, specifically the cities of Aosta and Turin.
 
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/1fdd2291-23b3-4561-8d0b-32649c9a9c0c" alt="Gameplay Screenshot 2" width="50%">
+  <img src="https://github.com/user-attachments/assets/9fe3f671-1756-47ea-9c02-1c578e08e646" alt="Aosta Path Routing" width="41.7%">
+</p>
+
+
 * **Algorithms Suite**: Features a comparative analysis between Dijkstra's algorithm and multiple variants of the A* algorithm driven by three distinct geographic heuristics: Manhattan, Euclidean, and Haversine distances.
 
 * **Performance & Heuristic Tightness**: Incorporates velocity-homogenized cost functions (converting distance metrics to time estimates in seconds). By introducing a calibrated urban velocity scaling factor (40 km/h) , the Haversine heuristic achieves a mathematical sweet spot—drastically shrinking the exploration space (up to an 8.5x computational reduction in dense networks like Turin) while ensuring absolute path-planning optimality.
@@ -86,6 +92,8 @@ This section details the logical and mathematical architecture of the software, 
 * **Advanced Features**: The algorithm distinguishes between continuous and dashed lane delimiters by analyzing the vertical distribution of white pixels. The detected lanes are projected back from the Bird's Eye View to the perspective of the original camera.
 
 * **YOLOv8 Integration & Obstacle Masking**: The YOLOv8 model is utilized to detect objects such as cars, trucks, and persons in the original frame. For every detected vehicle, a polygonal mask is generated based on its bounding box and projected into the BEV-binarized image. Before the histogram calculation, these areas are filled with black pixels, ensuring that the histogram peaks correspond only to actual road markings.
+
+<img width="1725" height="531" alt="Image" src="https://github.com/user-attachments/assets/9472d646-2902-4e86-802f-1999e39a8563" />
 
 * **Execution**: The script must be launched by passing the target dataset path as an argument.
 
