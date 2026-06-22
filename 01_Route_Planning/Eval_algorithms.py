@@ -33,6 +33,10 @@ if __name__ == "__main__":
     cities = ["Aosta, Aosta, Italy", "Turin, Piedmont, Italy"]
     
     for place_name in cities:
+        print("\n=========================================")
+        print("Running algorithms on ", place_name)
+        print(f"Downloading map data for {place_name}, please wait...")
+
         G = ox.graph_from_place(place_name, network_type="drive")
 
         for edge in G.edges:
@@ -57,8 +61,7 @@ if __name__ == "__main__":
             G.edges[edge]["dijkstra_uses"] = 0
             G.edges[edge]["astar_uses"] = 0
 
-        print("\n=========================================")
-        print("Running algorithms on ", place_name)
+        print("Graph loaded successfully!")
         print("Nodes: ", len(G.nodes))
         print("Edges: ", len(G.edges))
 
@@ -80,29 +83,28 @@ if __name__ == "__main__":
             start = random.choice(list(G.nodes))
             end = random.choice(list(G.nodes))
 
-            # eseguo A* Manhattan e vedo se la coppia è valida...
             m_steps = astar(G, start, end, "Manhattan")
 
             if m_steps is None:
-                continue #...se non lo è cambio coppia
+                continue
             
             manhattan_iter_num += m_steps
-            manhattan_iters.append(m_steps) # <-- AGGIUNTA
+            manhattan_iters.append(m_steps) 
             route_m = get_route_nodes(G, start, end)
 
-            e_steps = astar(G, start, end, "Euclidean") # <-- Modificato per usare variabile di appoggio
+            e_steps = astar(G, start, end, "Euclidean") 
             euclidean_iter_num += e_steps
-            euclidean_iters.append(e_steps) # <-- AGGIUNTA
+            euclidean_iters.append(e_steps) 
             route_e = get_route_nodes(G, start, end)
             
-            h_steps = astar(G, start, end, "Haversine") # <-- Modificato per usare variabile di appoggio
+            h_steps = astar(G, start, end, "Haversine")
             haversine_iter_num += h_steps
-            haversine_iters.append(h_steps) # <-- AGGIUNTA
+            haversine_iters.append(h_steps) 
             route_h = get_route_nodes(G, start, end)
             
-            d_steps = dijkstra(G, start, end) # <-- Modificato per usare variabile di appoggio
+            d_steps = dijkstra(G, start, end) 
             dijkstra_iterations_num += d_steps
-            dijkstra_iters.append(d_steps) # <-- AGGIUNTA
+            dijkstra_iters.append(d_steps)
             route_d = get_route_nodes(G, start, end)
 
             valid_pairs += 1
@@ -124,12 +126,6 @@ if __name__ == "__main__":
         print(f"A* with Euclidean heuristic: {calculate_route_weight(G, route_e):.2f}m")
         print(f"A* with Haversine heuristic: {calculate_route_weight(G, route_h):.2f}m")
 
-        # print("\n---------------------------------------------------------------------\n")
-        # for i in range(10):
-        #     print(f"{i+1},{dijkstra_iters[i]},{manhattan_iters[i]},{euclidean_iters[i]},{haversine_iters[i]}")
-        # print("---------------------------------------------------------------------\n")
-
-        # PLOT DEI 4 PERCORSI DELL'ULTIMA COPPIA CALCOLATA
         print(f"\nPlotting the last 4 paths found in {place_name}...")
         
         fig, ax = ox.plot_graph_routes(
@@ -139,7 +135,7 @@ if __name__ == "__main__":
             route_linewidth=4, 
             node_size=0,
             bgcolor="black",
-            show=False,   # <-- IMPORTANTE: impedisce che si apra subito
+            show=False,  
             close=False
         )
 
