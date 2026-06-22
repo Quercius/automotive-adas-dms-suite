@@ -4,6 +4,34 @@
 ![YOLOv8](https://img.shields.io/badge/Model-YOLOv8-yellow)
 ![scikit-learn](https://img.shields.io/badge/Library-scikit--learn-orange)
 
+# Installation & Requirements
+
+To prevent dependency conflicts, it is highly recommended to execute each module within its own Python Virtual Environment (venv).
+
+**General Setup**:
+
+1. **Clone** this repository.
+```bash
+   git clone https://github.com/Quercius/automotive-adas-dms-suite.git
+``` 
+2. **Navigate** to the desired assignment folder, for example:
+```bash
+   cd 01_Route_Planning
+```
+3. Create and activate a **virtual environment**.
+```bash
+  python -m venv venv
+  venv\Scripts\activate
+```
+4. **Install dependencies**:
+```bash
+   pip install -r requirements.txt
+```
+5. **Execute** the specific module. Refer to the *Execution* instruction in the sections above for the exact run command. For example:
+```bash
+    python Eval_algorithms.py
+```
+
 # Autonomous Driving & Driver Monitoring Systems
 
 This repository contains a collection of three distinct computer vision and path-planning projects developed for autonomous driving and driver safety applications. The projects are divided into three main modules: Route Planning, Lane & Obstacle Detection, and a Driver Monitoring System.
